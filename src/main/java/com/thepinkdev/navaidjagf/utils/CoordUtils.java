@@ -5,7 +5,7 @@ import com.thepinkdev.navaidjagf.entities.Coord;
 public class CoordUtils {
 
     /*
-    *   Functions taken from https://www.sunearthtools.com/es/tools/distance.php
+    *   All functions taken from https://www.sunearthtools.com/es/tools/distance.php
     */
 
     public static Double calculateDistanceBetweenTwoCoordsInkms(Coord coordA, Coord coordB)  {
