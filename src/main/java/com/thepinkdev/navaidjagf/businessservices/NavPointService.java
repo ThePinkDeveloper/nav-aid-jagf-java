@@ -2,11 +2,10 @@ package com.thepinkdev.navaidjagf.businessservices;
 
 import java.util.List;
 
-import com.thepinkdev.navaidjagf.jsonentities.NavPointJson;
-
-import com.thepinkdev.navaidjagf.jsonentities.CoordJson;
+import com.thepinkdev.navaidjagf.dtos.CoordDto;
+import com.thepinkdev.navaidjagf.dtos.NavPointDto;
 
 public interface NavPointService {
     
-    public List<NavPointJson> getNavPoints(CoordJson currentCoord);
+    public List<NavPointDto> getNavPoints(CoordDto currentCoord);
 }
