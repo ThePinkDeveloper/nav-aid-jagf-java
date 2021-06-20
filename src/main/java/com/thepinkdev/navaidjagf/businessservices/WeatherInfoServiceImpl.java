@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import com.thepinkdev.navaidjagf.entities.Coord;
 import com.thepinkdev.navaidjagf.enums.ErrorHandler;
 import com.thepinkdev.navaidjagf.utils.FileAccessUtils;
+import com.thepinkdev.navaidjagf.utils.UrlUtils;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -22,7 +23,7 @@ public class WeatherInfoServiceImpl implements WeatherInfoService {
 
     @Override
     public String getWeatherInfoByCoord(Coord coord) {
-        String url = contructURLForApiCallFromCoord(coord);
+        String url = UrlUtils.contructURLForApiCallFromCoord(coord);
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(url);
         String result;
@@ -41,22 +42,6 @@ public class WeatherInfoServiceImpl implements WeatherInfoService {
             result = ErrorHandler.ERROR_GETTING_WEATHERINFO.getErrorCode();
         }
         return result;
-    }
-
-    private String contructURLForApiCallFromCoord(Coord coord) {
-        
-        StringBuilder sb = new StringBuilder();
-        String apiKey = FileAccessUtils.readFile("./sensitive/.apikey");
-
-        sb.append("http://api.openweathermap.org/data/2.5/weather?lat=");
-        sb.append(coord.getLatitude());
-        sb.append("&lon=");
-        sb.append(coord.getLongitude());
-        sb.append("&appid=");
-        sb.append(apiKey);
-
-        return sb.toString();
-
     }
     
 }
