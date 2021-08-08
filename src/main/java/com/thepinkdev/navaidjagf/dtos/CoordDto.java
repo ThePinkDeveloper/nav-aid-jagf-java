@@ -1,10 +1,10 @@
 package com.thepinkdev.navaidjagf.dtos;
 
 public class CoordDto {
-
+ 
     private Double latitude;
     private Double longitude;
-
+    
     public CoordDto(Double latitude, Double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
@@ -25,4 +25,5 @@ public class CoordDto {
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
+
 }
