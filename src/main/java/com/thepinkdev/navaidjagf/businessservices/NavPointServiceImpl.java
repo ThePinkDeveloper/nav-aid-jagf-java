@@ -5,10 +5,6 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.thepinkdev.navaidjagf.dtos.CompleteWeatherInfoDto;
-import com.thepinkdev.navaidjagf.dtos.CoordDto;
-import com.thepinkdev.navaidjagf.dtos.GpsDataDto;
-import com.thepinkdev.navaidjagf.dtos.NavPointDto;
-import com.thepinkdev.navaidjagf.dtos.WeatherInfoDto;
 import com.thepinkdev.navaidjagf.entities.Coord;
 import com.thepinkdev.navaidjagf.entities.GpsData;
 import com.thepinkdev.navaidjagf.entities.NavPoint;
