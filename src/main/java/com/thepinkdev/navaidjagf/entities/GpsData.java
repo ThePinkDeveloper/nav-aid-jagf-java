@@ -1,13 +1,15 @@
-package com.thepinkdev.navaidjagf.dtos;
+package com.thepinkdev.navaidjagf.entities;
 
-public class CoordDto {
+public class GpsData {
 
     private Double latitude;
     private Double longitude;
+    private Integer heading;
 
-    public CoordDto(Double latitude, Double longitude) {
+    public GpsData(Double latitude, Double longitude, Integer heading) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.heading = heading;
     }
 
     public Double getLatitude() {
@@ -24,5 +26,13 @@ public class CoordDto {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public Integer getHeading() {
+        return heading;
+    }
+
+    public void setHeading(Integer heading) {
+        this.heading = heading;
     }
 }

@@ -2,13 +2,16 @@ package com.thepinkdev.navaidjagf.utils;
 
 import com.thepinkdev.navaidjagf.entities.Coord;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CoordUtils {
 
     /*
     *   All functions taken from https://www.sunearthtools.com/es/tools/distance.php
     */
 
-    public static Double calculateDistanceBetweenTwoCoordsInkms(Coord coordA, Coord coordB)  {
+    public Double calculateDistanceBetweenTwoCoordsInkms(Coord coordA, Coord coordB)  {
 
         final Double R = 6372.795477598; // Radius of the earth in km
         final Double LATA = deg2rad(coordA.getLatitude()); // Vertical
@@ -31,7 +34,7 @@ public class CoordUtils {
         return R * c;
     }
     
-    public static Double calculateDirectionBetweenTwoCoordsInDegrees(Coord coordA, Coord coordB) {
+    public Double calculateDirectionBetweenTwoCoordsInDegrees(Coord coordA, Coord coordB) {
     
         final Double LATA = deg2rad(coordA.getLatitude()); // Vertical
         final Double LATB = deg2rad(coordB.getLatitude()); // Vertical
@@ -62,7 +65,7 @@ public class CoordUtils {
         return heading;
     }
     
-    public static Coord calculateDestinationPoint(Coord coord, Double heading, Double distanceInKm) {
+    public Coord calculateDestinationPoint(Coord coord, Integer heading, Integer distanceInKm) {
     
         final Double R = 6372.795477598; // Radius of the earth in km
         final Double LATA = deg2rad(coord.getLatitude());
@@ -74,7 +77,7 @@ public class CoordUtils {
         // latB = asin( sin( latA) * cos( d / R ) + cos( latA ) * sin( d / R ) * cos( θ ))
         // lonB = lonA + atan2(sin( θ ) * sin( d / R ) * cos( latA ), cos( d / R ) − sin( latA ) * sin( latB ))
     
-        final Double headingRads = deg2rad(heading);
+        final Double headingRads = deg2rad(Double.valueOf(heading));
 
         // latitude Coord B
         final Double LATB = Math.asin(Math.sin(LATA) * Math.cos(distanceInKm / R) +
@@ -88,11 +91,11 @@ public class CoordUtils {
         return new Coord(rad2deg(LATB), rad2deg(LONB));
     }
     
-    private static Double deg2rad(Double angle) {
+    private Double deg2rad(Double angle) {
         return angle * (Math.PI / 180);
     }
     
-    private static Double rad2deg(Double radians) {
+    private Double rad2deg(Double radians) {
         return radians * (180 / Math.PI);
     }
     

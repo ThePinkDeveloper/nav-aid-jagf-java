@@ -2,12 +2,18 @@ package com.thepinkdev.navaidjagf.utils;
 
 import com.thepinkdev.navaidjagf.entities.Coord;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class UrlUtils {
 
-    public static String contructURLForApiCallFromCoord(Coord coord) {
+    @Autowired FileAccessUtils fileAccessUtils;
+
+    public String contructURLForApiCallFromCoord(Coord coord) {
         
         StringBuilder sb = new StringBuilder();
-        String apiKey = FileAccessUtils.readFile("./sensitive/.apikey");
+        String apiKey = fileAccessUtils.readFile("./sensitive/.apikey");
 
         sb.append("http://api.openweathermap.org/data/2.5/weather?lat=");
         sb.append(coord.getLatitude());

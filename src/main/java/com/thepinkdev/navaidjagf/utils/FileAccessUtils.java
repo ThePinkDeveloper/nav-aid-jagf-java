@@ -4,10 +4,12 @@ import java.io.File;
 import java.nio.file.Files;
 
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FileAccessUtils {
 
-    public static String readFile(String filepathFromResources) {
+    public String readFile(String filepathFromResources) {
 
         String result = "";
 
