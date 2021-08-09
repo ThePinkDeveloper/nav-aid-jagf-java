@@ -7,6 +7,7 @@ target/
 mvnw
 mvnw.cmd
 src/main/resources/sensitive/
+src/main/java/com/thepinkdev/navaidjagf/utils/Sensitive.java
 
 ### STS ###
 .apt_generated
