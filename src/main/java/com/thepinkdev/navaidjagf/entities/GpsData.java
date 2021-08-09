@@ -5,11 +5,13 @@ public class GpsData {
     private Double latitude;
     private Double longitude;
     private Integer heading;
+    private Double speed;
 
-    public GpsData(Double latitude, Double longitude, Integer heading) {
+    public GpsData(Double latitude, Double longitude, Integer heading, Double speed) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.heading = heading;
+        this.speed = speed;
     }
 
     public Double getLatitude() {
@@ -35,4 +37,13 @@ public class GpsData {
     public void setHeading(Integer heading) {
         this.heading = heading;
     }
+
+    public Double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(Double speed) {
+        this.speed = speed;
+    }
+
 }

@@ -4,6 +4,8 @@ public class CoordDto {
  
     private Double latitude;
     private Double longitude;
+
+    public CoordDto() {}
     
     public CoordDto(Double latitude, Double longitude) {
         this.latitude = latitude;

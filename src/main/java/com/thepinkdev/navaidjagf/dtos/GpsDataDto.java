@@ -1,32 +1,48 @@
 package com.thepinkdev.navaidjagf.dtos;
 
-import com.thepinkdev.navaidjagf.dtos.gpsinternals.CoordsDto;
-
 public class GpsDataDto {
 
-    private CoordsDto coordsDto;
-    private Long timeStamp;
-
-    public GpsDataDto() {}
-
-    public GpsDataDto(CoordsDto coordsDto, Long timeStamp) {
-        this.coordsDto = coordsDto;
-        this.timeStamp = timeStamp;
+    private Double latitude;
+    private Double longitude;
+    private Double heading;
+    private Double speed;
+    
+    public GpsDataDto(Double latitude, Double longitude, Double heading, Double speed) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.heading = heading;
+        this.speed = speed;
     }
 
-    public CoordsDto getCoordsDto() {
-        return coordsDto;
+    public Double getLatitude() {
+        return latitude;
     }
 
-    public void setCoordsDto(CoordsDto coordsDto) {
-        this.coordsDto = coordsDto;
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
     }
 
-    public Long getTimeStamp() {
-        return timeStamp;
+    public Double getLongitude() {
+        return longitude;
     }
 
-    public void setTimeStamp(Long timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getHeading() {
+        return heading;
+    }
+
+    public void setHeading(Double heading) {
+        this.heading = heading;
+    }
+
+    public Double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(Double speed) {
+        this.speed = speed;
     }
 }

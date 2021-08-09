@@ -14,22 +14,26 @@ public class GpsDataMapperImpl implements GpsDataMapper {
         Double latitude = null;
         Double longitude = null;
         Integer heading = null;
+        Double speed = null;
         
         if (!isLatitudeFromGpsEqualsNull(gpsDataDto)) {
-            latitude = gpsDataDto.getCoordsDto().getLatitude();
+            latitude = gpsDataDto.getLatitude();
         }
 
         if (!isLongitudeFromGpsEqualsNull(gpsDataDto)) {
-            longitude = gpsDataDto.getCoordsDto().getLongitude();
+            longitude = gpsDataDto.getLongitude();
         }
 
         if (!isHeadingFromGpsEqualsNull(gpsDataDto)) {
-            Double headingAsDouble  = gpsDataDto.getCoordsDto().getHeading();
-            heading = Integer.valueOf(headingAsDouble.toString());
+            heading = Integer.valueOf(gpsDataDto.getHeading().toString());
+        }
+
+        if (!isSpeedFromGpsEqualsNull(gpsDataDto)) {
+            speed = gpsDataDto.getSpeed();
         }
 
         if (latitude != null && longitude != null) {
-            return new GpsData(latitude, longitude, heading);
+            return new GpsData(latitude, longitude, heading, speed);
         } else {
             return null;
         }
@@ -37,15 +41,19 @@ public class GpsDataMapperImpl implements GpsDataMapper {
     }
 
     private Boolean isLatitudeFromGpsEqualsNull(GpsDataDto gpsDataDto) {
-        return gpsDataDto == null || gpsDataDto.getCoordsDto() == null || gpsDataDto.getCoordsDto().getLatitude() == null;
+        return gpsDataDto == null || gpsDataDto.getLatitude() == null;
     }
 
     private Boolean isLongitudeFromGpsEqualsNull(GpsDataDto gpsDataDto) {
-        return gpsDataDto == null || gpsDataDto.getCoordsDto() == null || gpsDataDto.getCoordsDto().getLongitude() == null;
+        return gpsDataDto == null || gpsDataDto.getLongitude() == null;
     }
 
     private Boolean isHeadingFromGpsEqualsNull(GpsDataDto gpsDataDto) {
-        return gpsDataDto == null || gpsDataDto.getCoordsDto() == null || gpsDataDto.getCoordsDto().getHeading() == null;
+        return gpsDataDto == null || gpsDataDto.getHeading() == null;
+    }
+
+    private Boolean isSpeedFromGpsEqualsNull(GpsDataDto gpsDataDto) {
+        return gpsDataDto == null || gpsDataDto.getSpeed() == null;
     }
     
 }
