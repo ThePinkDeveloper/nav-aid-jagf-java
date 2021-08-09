@@ -28,7 +28,7 @@ public class GpsDataMapperImpl implements GpsDataMapper {
             heading = Integer.valueOf(headingAsDouble.toString());
         }
 
-        if (latitude != null && longitude != null && heading != null) {
+        if (latitude != null && longitude != null) {
             return new GpsData(latitude, longitude, heading);
         } else {
             return null;
