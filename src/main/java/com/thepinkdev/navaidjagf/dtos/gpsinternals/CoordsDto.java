@@ -1,4 +1,4 @@
-package com.thepinkdev.navaidjagf.dtos;
+package com.thepinkdev.navaidjagf.dtos.gpsinternals;
 
 public class CoordsDto {
 
