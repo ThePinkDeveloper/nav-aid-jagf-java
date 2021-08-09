@@ -10,11 +10,15 @@ public class WeatherInfoMapperImpl implements WeatherInfoMapper {
 
     public WeatherInfo fromDtoToEntity(CompleteWeatherInfoDto completeWeatherInfoDto) {
         WeatherInfo weatherInfo = new WeatherInfo();
-        weatherInfo.setTemp(completeWeatherInfoDto.getMain().getTemp());
-        weatherInfo.setPressure(completeWeatherInfoDto.getMain().getPressure());
-        weatherInfo.setWindSpeed(completeWeatherInfoDto.getWind().getSpeed());
-        weatherInfo.setWindDirection(completeWeatherInfoDto.getWind().getDeg());
-        weatherInfo.setWindGust(completeWeatherInfoDto.getWind().getGust());
+        if (completeWeatherInfoDto != null && completeWeatherInfoDto.getMain() != null) {
+            weatherInfo.setTemp(completeWeatherInfoDto.getMain().getTemp());
+            weatherInfo.setPressure(completeWeatherInfoDto.getMain().getPressure());
+        }
+        if (completeWeatherInfoDto != null && completeWeatherInfoDto.getWind() != null) {
+            weatherInfo.setWindSpeed(completeWeatherInfoDto.getWind().getSpeed());
+            weatherInfo.setWindDirection(completeWeatherInfoDto.getWind().getDeg());
+            weatherInfo.setWindGust(completeWeatherInfoDto.getWind().getGust());
+        }
         return weatherInfo;
     }
 
