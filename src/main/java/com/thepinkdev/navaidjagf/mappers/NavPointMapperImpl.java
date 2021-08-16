@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class NavPointMapperImpl implements NavPointMapper {
 
     @Override
-    public NavPointDto fromEntityToDto(NavPoint navPoint) {
+    public NavPointDto fromEntityToDto(NavPoint navPoint, Integer heading) {
         
         NavPointDto navPointDto = new NavPointDto(navPoint.getId());
         CoordDto coordDto = new CoordDto();
@@ -20,13 +20,7 @@ public class NavPointMapperImpl implements NavPointMapper {
         coordDto.setLatitude(navPoint.getCoord().getLatitude());
         coordDto.setLongitude(navPoint.getCoord().getLongitude());
 
-        if (navPoint.getWeatherInfo() != null) {
-            weatherInfoDto.setPressure(navPoint.getWeatherInfo().getPressure());
-            weatherInfoDto.setTemp(navPoint.getWeatherInfo().getTemp());
-            weatherInfoDto.setWindDirection(navPoint.getWeatherInfo().getWindDirection());
-            weatherInfoDto.setWindGust(navPoint.getWeatherInfo().getWindGust());
-            weatherInfoDto.setWindSpeed(navPoint.getWeatherInfo().getWindSpeed());
-        }
+
 
         navPointDto.setCoordDto(coordDto);
         navPointDto.setWeatherInfoDto(weatherInfoDto);

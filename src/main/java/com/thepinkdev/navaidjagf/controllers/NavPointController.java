@@ -37,7 +37,7 @@ public class NavPointController {
             if (!navPointList.isEmpty()) {
                 List<NavPointDto> navPointDtoList = new ArrayList<>();
                 navPointList.forEach( navPoint -> {
-                    NavPointDto navPointDto = navPointMapper.fromEntityToDto(navPoint);
+                    NavPointDto navPointDto = navPointMapper.fromEntityToDto(navPoint, gpsData.getHeading());
                     navPointDtoList.add(navPointDto);
                 });
                 return navPointDtoList;

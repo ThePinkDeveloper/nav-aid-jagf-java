@@ -5,6 +5,6 @@ import com.thepinkdev.navaidjagf.entities.NavPoint;
 
 public interface NavPointMapper {
 
-    public NavPointDto fromEntityToDto(NavPoint navPoint);
+    public NavPointDto fromEntityToDto(NavPoint navPoint, Integer heading);
     
 }

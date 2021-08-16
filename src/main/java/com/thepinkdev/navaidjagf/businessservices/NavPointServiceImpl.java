@@ -9,8 +9,9 @@ import com.thepinkdev.navaidjagf.entities.Coord;
 import com.thepinkdev.navaidjagf.entities.GpsData;
 import com.thepinkdev.navaidjagf.entities.NavPoint;
 import com.thepinkdev.navaidjagf.entities.WeatherInfo;
-import com.thepinkdev.navaidjagf.mappers.WeatherInfoMapper;
+import com.thepinkdev.navaidjagf.mappers.CompleteWeatherInfoMapper;
 import com.thepinkdev.navaidjagf.utils.CoordUtils;
+import com.thepinkdev.navaidjagf.utils.MathUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,10 +20,9 @@ import org.springframework.stereotype.Service;
 public class NavPointServiceImpl implements NavPointService {
 
     @Autowired CoordUtils coordUtils;
-
+    @Autowired MathUtils mathUtils;
     @Autowired WeatherInfoService weatherInfoService;
-
-    @Autowired WeatherInfoMapper weatherInfoMapper;
+    @Autowired CompleteWeatherInfoMapper weatherInfoMapper;
 
     @Override
     public List<NavPoint> getNavPoints(GpsData gpsData) {
@@ -52,8 +52,8 @@ public class NavPointServiceImpl implements NavPointService {
         if (HEADING != null) {
 
             // Calculate angles
-            final Integer HEADING_MINUS_15 = calculateHeadingWithCorrection(HEADING - 15);
-            final Integer HEADING_PLUS_15 = calculateHeadingWithCorrection(HEADING + 15);
+            final Integer HEADING_MINUS_15 = mathUtils.calculateHeadingWithCorrection(HEADING - 15);
+            final Integer HEADING_PLUS_15 = mathUtils.calculateHeadingWithCorrection(HEADING + 15);
 
             // Distance 15km degree -15º
             Coord coord_1 = coordUtils.calculateDestinationPoint(currentCoord, HEADING_MINUS_15, SHORT_DISTANCE);
@@ -107,15 +107,6 @@ public class NavPointServiceImpl implements NavPointService {
 
         return navPointsList;
 
-    }
-
-    private Integer calculateHeadingWithCorrection(Integer heading) {
-        if (heading < 0) {
-            heading = 360 - heading;
-        } else if (heading > 360) {
-            heading = heading - 360;
-        }
-        return heading;
     }
     
 }

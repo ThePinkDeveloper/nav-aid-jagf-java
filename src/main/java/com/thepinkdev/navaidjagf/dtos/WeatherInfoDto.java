@@ -2,60 +2,62 @@ package com.thepinkdev.navaidjagf.dtos;
 
 public class WeatherInfoDto {
 
-    private Double temp;
-    private Integer pressure;
-    private Double windSpeed;
-    private Integer windDirection;
-    private Double windGust;
+    private String temp;
+    private String pressure;
+    private String windSpeed;
+    private Integer relativeToHeadingWindDirection;
+    private String windGust;
 
     public WeatherInfoDto() {}
     
-    public WeatherInfoDto(Double temp, Integer pressure, Double windSpeed, Integer windDirection, Double windGust) {
+    public WeatherInfoDto(String temp, String pressure, String windSpeed, Integer relativeToHeadingWindDirection, String windGust) {
         this.temp = temp;
         this.pressure = pressure;
         this.windSpeed = windSpeed;
-        this.windDirection = windDirection;
+        this.relativeToHeadingWindDirection = relativeToHeadingWindDirection;
         this.windGust = windGust;
     }
 
-    public Double getTemp() {
+    public String getTemp() {
         return temp;
     }
 
-    public void setTemp(Double temp) {
+    public void setTemp(String temp) {
         this.temp = temp;
     }
 
-    public Integer getPressure() {
+    public String getPressure() {
         return pressure;
     }
 
-    public void setPressure(Integer pressure) {
+    public void setPressure(String pressure) {
         this.pressure = pressure;
     }
 
-    public Double getWindSpeed() {
+    public String getWindSpeed() {
         return windSpeed;
     }
 
-    public void setWindSpeed(Double windSpeed) {
+    public void setWindSpeed(String windSpeed) {
         this.windSpeed = windSpeed;
     }
 
-    public Integer getWindDirection() {
-        return windDirection;
+    public Integer getRelativeToHeadingWindDirection() {
+        return relativeToHeadingWindDirection;
     }
 
-    public void setWindDirection(Integer windDirection) {
-        this.windDirection = windDirection;
+    public void setRelativeToHeadingWindDirection (Integer relativeToHeadingWindDirection) {
+        this.relativeToHeadingWindDirection = relativeToHeadingWindDirection;
     }
 
-    public Double getWindGust() {
+    public String getWindGust() {
         return windGust;
     }
 
-    public void setWindGust(Double windGust) {
+    public void setWindGust(String windGust) {
         this.windGust = windGust;
     }
+
+
     
 }
