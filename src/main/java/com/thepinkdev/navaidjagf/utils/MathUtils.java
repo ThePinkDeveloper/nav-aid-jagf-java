@@ -16,6 +16,9 @@ public class MathUtils {
 
     public Integer calculateRelativeWindDirectionToHeading(Integer heading, Integer windDirection) {
         Integer result = 0;
+        if (heading == null) {
+            return windDirection;
+        }
         if (windDirection > heading) {
             result = windDirection - heading;
         }

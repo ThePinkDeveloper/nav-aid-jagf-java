@@ -5,6 +5,7 @@ public class WeatherInfoDto {
     private String temp;
     private String pressure;
     private String windSpeed;
+    private Integer relativeToZeroDegreesWindDirection;
     private Integer relativeToHeadingWindDirection;
     private String windGust;
 
@@ -48,6 +49,14 @@ public class WeatherInfoDto {
 
     public void setRelativeToHeadingWindDirection (Integer relativeToHeadingWindDirection) {
         this.relativeToHeadingWindDirection = relativeToHeadingWindDirection;
+    }
+    
+    public Integer getRelativeToZeroDegreesWindDirection() {
+        return relativeToZeroDegreesWindDirection;
+    }
+
+    public void setRelativeToZeroDegreesWindDirection(Integer relativeToZeroDegreesWindDirection) {
+        this.relativeToZeroDegreesWindDirection = relativeToZeroDegreesWindDirection;
     }
 
     public String getWindGust() {

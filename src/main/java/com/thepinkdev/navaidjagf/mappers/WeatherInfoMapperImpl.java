@@ -7,7 +7,8 @@ import com.thepinkdev.navaidjagf.entities.WeatherInfo;
 import com.thepinkdev.navaidjagf.utils.MathUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
+@Service
 public class WeatherInfoMapperImpl implements WeatherInfoMapper {
 
     @Autowired MathUtils mathUtils;
@@ -20,6 +21,7 @@ public class WeatherInfoMapperImpl implements WeatherInfoMapper {
         WeatherInfoDto weatherInfoDto = new WeatherInfoDto();
         String pressureStr = "N/A";
         String tempStr = "N/A";
+        Integer relativeToZeroDegreesWindDirection = null;
         Integer relativeToHeadingWindDirection = null;
         String windSpeedStr = "N/A";
         String windGustStr = "N/A";
@@ -37,7 +39,11 @@ public class WeatherInfoMapperImpl implements WeatherInfoMapper {
 
         Integer windDirection = weatherInfo.getWindDirection();
         if (windDirection != null) {
-            relativeToHeadingWindDirection = mathUtils.calculateRelativeWindDirectionToHeading(heading, windDirection);
+            if (heading != null) {
+                relativeToHeadingWindDirection = mathUtils.calculateRelativeWindDirectionToHeading(heading, windDirection);
+            } else {
+                relativeToZeroDegreesWindDirection = mathUtils.calculateRelativeWindDirectionToHeading(heading, windDirection);
+            }
         }
 
         Double windSpeedMeterPerSecond = weatherInfo.getWindSpeed();
@@ -54,6 +60,7 @@ public class WeatherInfoMapperImpl implements WeatherInfoMapper {
 
         weatherInfoDto.setPressure(pressureStr);
         weatherInfoDto.setTemp(tempStr);
+        weatherInfoDto.setRelativeToZeroDegreesWindDirection(relativeToZeroDegreesWindDirection);
         weatherInfoDto.setRelativeToHeadingWindDirection(relativeToHeadingWindDirection);
         weatherInfoDto.setWindSpeed(windSpeedStr);
         weatherInfoDto.setWindGust(windGustStr);
