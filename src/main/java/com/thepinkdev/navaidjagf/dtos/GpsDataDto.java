@@ -4,10 +4,10 @@ public class GpsDataDto {
 
     private Double latitude;
     private Double longitude;
-    private Double heading;
+    private Integer heading;
     private Double speed;
     
-    public GpsDataDto(Double latitude, Double longitude, Double heading, Double speed) {
+    public GpsDataDto(Double latitude, Double longitude, Integer heading, Double speed) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.heading = heading;
@@ -30,11 +30,11 @@ public class GpsDataDto {
         this.longitude = longitude;
     }
 
-    public Double getHeading() {
+    public Integer getHeading() {
         return heading;
     }
 
-    public void setHeading(Double heading) {
+    public void setHeading(Integer heading) {
         this.heading = heading;
     }
 
